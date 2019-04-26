@@ -1,16 +1,16 @@
 # Horizontal Calendar View - Android
 Horizontal Calender View is a library for android.
 
-## Demo 
+## My fork
+I send issues to mybringback22 to change or add function to change color of selected day in calendar
+but have no response to it so I decided to implement it by myself.
 
+## Demo 
 
 <img src="ss/DemoGif.gif" width="400" >
 
-
-<img src="ss/DemoGifTwo.gif" width="400" >
 <!-- 
 ![](ss/DemoGif.gif)
-![](ss/DemoGifTwo.gif)
  -->
 
 
@@ -30,7 +30,7 @@ allprojects {
 Add following line in the dependencies block in `build.gradle(Module:app)`
 
 ``` 
-implementation 'com.github.mybringback22:HorizontalCalendarView-Android-:0.1.0'
+implementation 'com.github.jalips:HorizontalCalendarView-Android-:v1.0.1'
 ```
 
 ## Using Horizontal Calendar View

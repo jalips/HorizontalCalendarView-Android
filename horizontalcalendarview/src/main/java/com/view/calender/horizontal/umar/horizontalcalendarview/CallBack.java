@@ -10,13 +10,12 @@ import java.lang.reflect.Method;
 public class CallBack {
     private String methodName;
     private Object scope;
-    /*
-        Sending Third Parameter. For Internet Check.
-     */
+
     public CallBack(Object scope, String methodName) {
         this.methodName = methodName;
         this.scope = scope;
     }
+
     public Object invoke(Object... parameters) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         Method method = scope.getClass().getMethod(methodName , getParameterClasses(parameters));
         return method.invoke(scope , parameters);
@@ -29,6 +28,5 @@ public class CallBack {
         }
         return classes;
     }
-
 
 }

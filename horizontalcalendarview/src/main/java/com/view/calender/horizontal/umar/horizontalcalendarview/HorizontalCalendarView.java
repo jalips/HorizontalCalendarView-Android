@@ -20,7 +20,6 @@ import java.util.Date;
 
 public class HorizontalCalendarView extends LinearLayout{
 
-
     LinearLayout leftButton;
     LinearLayout rightButton;
     ImageView leftImage;
@@ -53,15 +52,12 @@ public class HorizontalCalendarView extends LinearLayout{
         leftButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(context, "left but", Toast.LENGTH_SHORT).show();
-//                if (linearLayoutManager.findFirstVisibleItemPosition())
                 recyclerView.smoothScrollToPosition(linearLayoutManager.findFirstVisibleItemPosition() - 3);
             }
         });
         rightButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(context, "right but", Toast.LENGTH_SHORT).show();
                 recyclerView.smoothScrollToPosition(linearLayoutManager.findLastVisibleItemPosition() + 3);
             }
         });
@@ -116,9 +112,8 @@ public class HorizontalCalendarView extends LinearLayout{
             currentDayModelList = new ArrayList<>();
             dateFormat = new SimpleDateFormat("MMMM-EEE-yyyy-MM-dd");
             date = new Date();
-            //System.out.println("Day 1"+" "+dateFormat.format(date));
             DayDateMonthYearModel currentDayModel=new DayDateMonthYearModel();
-            String currentDate=dateFormat.format(date).toString();
+            String currentDate= dateFormat.format(date);
             String[] parts = currentDate.split(" ");
             String[] partsDate = currentDate.split("-");
             currentDayModel.month = partsDate[0];
@@ -132,7 +127,6 @@ public class HorizontalCalendarView extends LinearLayout{
             cal.setTime(date);
             calPrevious.setTime(date);
 
-
             for (int i = 0; i < 30; i++) {
                 calPrevious.add(Calendar.DAY_OF_WEEK, -1);
                 String nextDate = dateFormat.format(calPrevious.getTime());
@@ -145,12 +139,10 @@ public class HorizontalCalendarView extends LinearLayout{
                 previousDayMode.monthNumeric = partsNextDate[3];
                 previousDayMode.isToday= false;
                 isLoading = false;
-//                calAdapter.addPrevious(currentDayMode);
                 currentDayModelList.add(0,previousDayMode);
             }
             currentDayModelList.add(currentDayModel);
 
-            //SimpleDateFormat sdf = new SimpleDateFormat("MMM EEE yyyy-MM-dd");
             for (int i = 0; i < 30; i++) {
                 cal.add(Calendar.DAY_OF_WEEK, 1);
                 String nextDate = dateFormat.format(cal.getTime());
@@ -177,9 +169,7 @@ public class HorizontalCalendarView extends LinearLayout{
 
                     @Override
                     protected void loadMoreItemsOnLeft() {
-//                        isLoading = true;
-//                        Toast.makeText(context, "Reached Left", Toast.LENGTH_SHORT).show();
-//                        loadPreviousPage( );
+                        // TODO : what here ?
                     }
 
                     @Override
@@ -212,7 +202,6 @@ public class HorizontalCalendarView extends LinearLayout{
         init();
     }
 
-
     public void setBackgroundColor(int color){
         mainBackground.setBackgroundColor(color);
     }
@@ -220,7 +209,7 @@ public class HorizontalCalendarView extends LinearLayout{
     public void setControlTint(int color){
         rightImage.setColorFilter(ContextCompat.getColor(context, color), android.graphics.PorterDuff.Mode.SRC_IN);
         leftImage.setColorFilter(ContextCompat.getColor(context, color), android.graphics.PorterDuff.Mode.SRC_IN);
-}
+    }
 
     public void showControls(boolean show){
         if(show){
@@ -254,15 +243,14 @@ public class HorizontalCalendarView extends LinearLayout{
         }
     }
 
-    Object toCallBack ;
+    Object toCallBack;
 
     public void setContext( Object toCallBack){
         this.toCallBack = toCallBack;
         calAdapter.setCallback(toCallBack);
         Date date = new Date();
-        //System.out.println("Day 1"+" "+dateFormat.format(date));
         DayDateMonthYearModel currentDayModel=new DayDateMonthYearModel();
-        String currentDate=dateFormat.format(date).toString();
+        String currentDate = dateFormat.format(date);
         String[] parts = currentDate.split(" ");
         String[] partsDate = currentDate.split("-");
         currentDayModel.month = partsDate[0];

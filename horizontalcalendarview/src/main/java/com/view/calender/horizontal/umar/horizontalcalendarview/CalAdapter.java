@@ -25,7 +25,7 @@ public class CalAdapter extends RecyclerView.Adapter<CalAdapter.MyViewHolder> {
 
     int color = R.color.black;
 
-    ArrayList<DayDateMonthYearModel> dayModelList = new ArrayList<>();
+    ArrayList<DayDateMonthYearModel> dayModelList;
     TextView clickedTextView = null;
     ArrayList<TextView> dateArrayList = new ArrayList<>();
     ArrayList<TextView> dayArrayList = new ArrayList<>();
@@ -51,7 +51,6 @@ public class CalAdapter extends RecyclerView.Adapter<CalAdapter.MyViewHolder> {
             date =  view.findViewById(R.id.date);
             haveAppointment =  view.findViewById(R.id.have_appointment);
             divider =  view.findViewById(R.id.divider);
-
         }
     }
 
@@ -99,7 +98,6 @@ public class CalAdapter extends RecyclerView.Adapter<CalAdapter.MyViewHolder> {
                     clickedTextView.setTextColor(context.getResources().getColor(R.color.white));
                     clickedTextView.setTypeface(clickedTextView.getTypeface(), Typeface.NORMAL);
                 }else{
-//                    if(!dayModelList.get(pos).isToday) {
                     if(lastDaySelected!=null && lastDaySelected.isToday){
                         clickedTextView.setBackground(context.getResources().getDrawable(R.drawable.currect_date_background));
                         clickedTextView.setTextColor(context.getResources().getColor(R.color.white));
@@ -126,17 +124,11 @@ public class CalAdapter extends RecyclerView.Adapter<CalAdapter.MyViewHolder> {
                     e.printStackTrace();
                 }
 
-
                 lastDaySelected=dayModelList.get(pos);
-
-
-
             }
         });
 
-
     }
-
 
     @Override
     public int getItemCount() {
@@ -160,7 +152,6 @@ public class CalAdapter extends RecyclerView.Adapter<CalAdapter.MyViewHolder> {
         super.onViewDetachedFromWindow(holder);
     }
 
-
     public void changeAccent(int color ){
         this.color = color;
         for(int i = 0 ; i < dateArrayList.size()  ; i++){
@@ -170,9 +161,4 @@ public class CalAdapter extends RecyclerView.Adapter<CalAdapter.MyViewHolder> {
         }
     }
 
-
-//    public void addPrevious(DayDateMonthYearModel DDMYModel) {
-//        dayModelList.add(0,DDMYModel);
-//        notifyItemInserted(dayModelList.size() - 1);
-//    }
 }
