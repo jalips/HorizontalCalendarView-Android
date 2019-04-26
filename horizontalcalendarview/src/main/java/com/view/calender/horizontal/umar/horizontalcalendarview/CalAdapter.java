@@ -2,6 +2,8 @@ package com.view.calender.horizontal.umar.horizontalcalendarview;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,9 @@ public class CalAdapter extends RecyclerView.Adapter<CalAdapter.MyViewHolder> {
     DayDateMonthYearModel lastDaySelected;
 
     int color = R.color.black;
+
+    Drawable backgroundSelectedDay;
+    Drawable currentDateBackground;
 
     ArrayList<DayDateMonthYearModel> dayModelList;
     TextView clickedTextView = null;
@@ -93,13 +98,28 @@ public class CalAdapter extends RecyclerView.Adapter<CalAdapter.MyViewHolder> {
             public void onClick(View v) {
                 int pos = Integer.valueOf( v.getTag().toString());
                 if(clickedTextView==null) {
+
                     clickedTextView = (TextView) v;
-                    clickedTextView.setBackground(context.getResources().getDrawable(R.drawable.background_selected_day));
+
+                    if(backgroundSelectedDay != null){
+                        clickedTextView.setBackground(backgroundSelectedDay);
+                    }else{
+                        clickedTextView.setBackground(context.getResources().getDrawable(R.drawable.background_selected_day));
+                    }
+
                     clickedTextView.setTextColor(context.getResources().getColor(R.color.white));
                     clickedTextView.setTypeface(clickedTextView.getTypeface(), Typeface.NORMAL);
+
                 }else{
+
                     if(lastDaySelected!=null && lastDaySelected.isToday){
-                        clickedTextView.setBackground(context.getResources().getDrawable(R.drawable.currect_date_background));
+
+                        if(currentDateBackground != null){
+                            clickedTextView.setBackground(currentDateBackground);
+                        }else{
+                            clickedTextView.setBackground(context.getResources().getDrawable(R.drawable.currect_date_background));
+                        }
+
                         clickedTextView.setTextColor(context.getResources().getColor(R.color.white));
                         clickedTextView.setTypeface(clickedTextView.getTypeface(), Typeface.NORMAL);
                     }else{
@@ -108,9 +128,17 @@ public class CalAdapter extends RecyclerView.Adapter<CalAdapter.MyViewHolder> {
                         clickedTextView.setTypeface(clickedTextView.getTypeface(), Typeface.NORMAL);
                     }
                     clickedTextView = (TextView) v;
-                    clickedTextView.setBackground(context.getResources().getDrawable(R.drawable.background_selected_day));
+
+
+                    if(backgroundSelectedDay != null){
+                        clickedTextView.setBackground(backgroundSelectedDay);
+                    }else{
+                        clickedTextView.setBackground(context.getResources().getDrawable(R.drawable.background_selected_day));
+                    }
+
                     clickedTextView.setTextColor(context.getResources().getColor(R.color.white));
                     clickedTextView.setTypeface(clickedTextView.getTypeface(), Typeface.NORMAL);
+
                 }
 
                 try {
@@ -152,13 +180,21 @@ public class CalAdapter extends RecyclerView.Adapter<CalAdapter.MyViewHolder> {
         super.onViewDetachedFromWindow(holder);
     }
 
-    public void changeAccent(int color ){
+    public void changeAccent(int color){
         this.color = color;
         for(int i = 0 ; i < dateArrayList.size()  ; i++){
             dayArrayList.get(i).setTextColor(context.getResources().getColor(color));
             dateArrayList.get(i).setTextColor(context.getResources().getColor(color));
             dividerArrayList.get(i).setBackgroundColor(context.getResources().getColor(color));
         }
+    }
+
+    public void changeBackgroundSelectedDay(Drawable backgroundSelectedDay){
+        this.backgroundSelectedDay = backgroundSelectedDay;
+    }
+
+    public void changeCurrentDateBackground(Drawable currentDateBackground){
+        this.currentDateBackground = currentDateBackground;
     }
 
 }
