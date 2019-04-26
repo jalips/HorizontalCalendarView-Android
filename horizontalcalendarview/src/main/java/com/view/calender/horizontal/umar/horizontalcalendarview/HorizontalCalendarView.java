@@ -1,6 +1,7 @@
 package com.view.calender.horizontal.umar.horizontalcalendarview;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -277,7 +278,17 @@ public class HorizontalCalendarView extends LinearLayout{
         init();
     }
 
-    public void changeAccent(int color ){
-        calAdapter.changeAccent(color );
+    public void changeAccent(int color){
+        calAdapter.changeAccent(color);
     }
+
+    public void changeBackgroundSelectedDay(Drawable drawable){
+        calAdapter.changeBackgroundSelectedDay(drawable);
+    }
+
+    public void changeCurrentDateBackground(Drawable drawable){
+        calAdapter.changeCurrentDateBackground(drawable);
+    }
+
+
 }
