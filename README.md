@@ -5,6 +5,33 @@ Horizontal Calender View is a library for android.
 I send issues to mybringback22 to change or add function to change color of selected day in calendar
 but have no response to it so I decided to implement it by myself.
 
+For that I add two methods:
+``` 
+hcv.changeBackgroundSelectedDay(getResources().getDrawable(com.view.calender.horizontal.umar.horizontalcalendarview.R.drawable.background_selected_day));
+hcv.changeCurrentDateBackground(getResources().getDrawable(com.view.calender.horizontal.umar.horizontalcalendarview.R.drawable.currect_date_background));
+```
+
+And you need to create two Drawable files like this one:
+``` 
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:bottom="2dp"
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp">
+        <shape android:shape="rectangle" >
+            <solid android:color="@color/colorPrimaryDark"/>
+            <stroke
+                android:width="1dp"
+                android:color="@color/colorPrimaryDark" />
+        </shape>
+    </item>
+
+</layer-list>
+```
+
+
 ## Demo 
 
 <img src="ss/DemoGif.gif" width="400" >
@@ -30,7 +57,7 @@ allprojects {
 Add following line in the dependencies block in `build.gradle(Module:app)`
 
 ``` 
-implementation 'com.github.jalips:HorizontalCalendarView-Android-:v1.0.1'
+implementation 'com.github.jalips:HorizontalCalendarView-Android-:v1.1.0'
 ```
 
 ## Using Horizontal Calendar View
