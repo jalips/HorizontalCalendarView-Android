@@ -7,8 +7,8 @@ but have no response to it so I decided to implement it by myself.
 
 For that I add two methods:
 ``` 
-hcv.changeBackgroundSelectedDay(getResources().getDrawable(com.view.calender.horizontal.umar.horizontalcalendarview.R.drawable.background_selected_day));
-hcv.changeCurrentDateBackground(getResources().getDrawable(com.view.calender.horizontal.umar.horizontalcalendarview.R.drawable.currect_date_background));
+hcv.changeBackgroundSelectedDay(getResources().getDrawable(R.drawable.background_selected_day));
+hcv.changeCurrentDateBackground(getResources().getDrawable(R.drawable.currect_date_background));
 ```
 
 And you need to create two Drawable files like this one:
@@ -57,7 +57,7 @@ allprojects {
 Add following line in the dependencies block in `build.gradle(Module:app)`
 
 ``` 
-implementation 'com.github.jalips:HorizontalCalendarView-Android-:v1.1.0'
+implementation 'com.github.jalips:HorizontalCalendarView-Android-:v1.1.1'
 ```
 
 ## Using Horizontal Calendar View
